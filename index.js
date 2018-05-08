@@ -4,6 +4,7 @@ const Command = require('command');
 module.exports = function EventMobFinder(dispatch) {
 	const command = Command(dispatch);
 	let enabled = true;
+	npcs = [];
 	
 	command.add('eventmob', () => {
 		enabled = !enabled;
@@ -25,13 +26,17 @@ module.exports = function EventMobFinder(dispatch) {
 				debug:false,
 				owners: [{id: 0}]
 			});
+			npcs[event.gameId] = event;
 			notice();
 			command.message('Found event mob.');
 		}
 	});
 	
 	dispatch.hook('S_DESPAWN_NPC', 3, event => {
-		dispatch.toClient('S_DESPAWN_DROPITEM', 1, {id:{low:event.gameId.low,high:0,unsigned:true}} );
+		if(npcs[event.gameId]) {
+			dispatch.toClient('S_DESPAWN_DROPITEM', 1, {id:{low:event.gameId.low,high:0,unsigned:true}} );
+			delete npcs[event.gameId];
+		}
 	});
 	
 	function notice() {
