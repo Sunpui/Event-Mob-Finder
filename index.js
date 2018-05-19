@@ -11,7 +11,7 @@ module.exports = function EventMobFinder(dispatch) {
 		command.message('Level bot '+(enabled?'enabled':'disabled')+'.');
 	});
 	
-	dispatch.hook('S_SPAWN_NPC', 7, event => {
+	dispatch.hook('S_SPAWN_NPC', 8, event => {
 		if(event.unk20<<24>>24 === 1) {
 			dispatch.toClient('S_SPAWN_DROPITEM', 6, {
 				gameId: {low:event.gameId.low,high:0,unsigned:true},
