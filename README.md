@@ -1,7 +1,7 @@
 # Event-Mob-Finder
 Tera proxy module
 
-Marks every event npc (npcs who aren't usually there)
+Marks every event npc
 
 requires command module
 
