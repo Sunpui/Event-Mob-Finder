@@ -8,7 +8,7 @@ module.exports = function EventMobFinder(dispatch) {
 	
 	command.add('eventmob', () => {
 		enabled = !enabled;
-		command.message('Level bot '+(enabled?'enabled':'disabled')+'.');
+		command.message('Event mob finder '+(enabled?'enabled':'disabled')+'.');
 	});
 	
 	dispatch.hook('S_SPAWN_NPC', 8, event => {
