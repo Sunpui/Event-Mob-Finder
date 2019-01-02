@@ -1,8 +1,7 @@
 //written by Bubble
-const Command = require('command');
 
 module.exports = function EventMobFinder(dispatch) {
-	const command = Command(dispatch);
+	const command = dispatch.command;
 	let enabled = true;
 	let npcs = [];
 	
